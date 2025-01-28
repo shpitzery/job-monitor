@@ -48,3 +48,23 @@ def get_all_jobs():
     conn.close()
 
     return [{'id': row[0], 'company': row[1], 'title': row[2], 'url': row[3], 'posted_date': row[4]} for row in jobs]
+
+# Delete a job from the db
+def delete_job(id):
+    try:
+        conn = sqlite3.connect(DB_NAME)
+        cursor = conn.cursor()
+
+        cursor.execute('SELECT id FROM jobs WHERE id = ?', (id,))
+        if cursor.fetchone() is None:
+            conn.close()
+            return False
+        
+        cursor.execute('DELETE FROM jobs WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+
+    except sqlite3.Error as e:
+        if 'conn' in locals():
+            conn.close()
+        raise e 
