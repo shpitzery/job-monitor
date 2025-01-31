@@ -19,10 +19,6 @@ def send_notifications(yag, recipient_email, num_new_jobs, frontend_url):
         Best regards,
 
         Your Job Tracker"""
-        # f"Hello!",
-        # f"\nWe found {num_new_jobs} new job(s)!",
-        # f"\nYou can view all jobs at: {frontend_url}",
-        # f"\nBest regards,\nYour Job Tracker"
     ]
     
     try:
