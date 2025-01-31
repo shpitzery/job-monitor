@@ -41,7 +41,7 @@ def scheduler():
         logger.error(f"Scraping failed: {str(e)}")
 
 def start_scheduler():
-    schedule.every(1).minutes.do(scheduler) # Run the scraper every 6 hours
+    # schedule.every(1).minutes.do(scheduler) # Run the scraper every 1 minute
     schedule.every(6).hours.do(scheduler) # Run the scraper every 6 hours
 
     while True:
