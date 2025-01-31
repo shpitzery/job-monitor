@@ -12,8 +12,9 @@ def setup_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             company TEXT NOT NULL,
             title TEXT NOT NULL,
-            url TEXT NOT NULL,
-            posted_date TEXT
+            url TEXT NOT NULL UNIQUE,
+            posted_date TEXT,
+            location TEXT
         )
     ''')
 
@@ -27,13 +28,21 @@ def insert_job(job):
         cursor = conn.cursor()
 
         cursor.execute('''
-            INSERT INTO jobs (company, title, url, posted_date)
-            VALUES (?, ?, ?, ?)
-        ''', (job['company'], job['title'], job['url'], job['posted_date']))
+            INSERT INTO jobs (company, title, url, posted_date, location)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (
+            job['company'], 
+            job['title'], 
+            job['url'], 
+            job['posted_date'],
+            job['location']
+        ))
 
         conn.commit()
+        return True
     except sqlite3.IntegrityError:
         print(f"Job already exists: {job['url']}")
+        return False # The inserted job has the same job_url like an existing one
     finally:
         conn.close()
 
@@ -47,7 +56,14 @@ def get_all_jobs():
 
     conn.close()
 
-    return [{'id': row[0], 'company': row[1], 'title': row[2], 'url': row[3], 'posted_date': row[4]} for row in jobs]
+    return [{
+        'id': row[0], 
+        'company': row[1], 
+        'title': row[2], 
+        'url': row[3], 
+        'posted_date': row[4], 
+        'location': row[5]
+    } for row in jobs]
 
 # Delete a job from the db
 def delete_job(id):

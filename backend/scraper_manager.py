@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.common.exceptions import WebDriverException
 import time
 import logging
 from config import companies
@@ -61,6 +61,7 @@ def positions(driver, company_name: str):
         
         print(f"\nFound {len(jobs)} positions:\n")
         
+        job_list = []
         for job in jobs:
             try:
                 title = job.find_element(*locators['title']).text.strip()
@@ -69,29 +70,28 @@ def positions(driver, company_name: str):
                 location = job.find_element(*locators['location']).text.strip()
 
                 position = {
-                    "Title": title,
-                    "URL": job_url,
-                    "Posted Date": posted,
-                    "Location": location
+                    "company": company_name,
+                    "title": title,
+                    "url": job_url,
+                    "posted_date": posted,
+                    "location": location
                 }
                 # for key, value in position_text.items():
                 #     print(f'{key}: {value}')
                 # print("-" * 50)
 
-                return position
-                
+                job_list.append(position)
+
             except Exception as e:
                 logger.error(f"Error getting position details: {str(e)}")
-                
+
+        return job_list
+    
     except Exception as e:
         logger.error(f"Main error: {str(e)}")
         if driver:
             logger.info("Taking screenshot of error state...")
             driver.save_screenshot("error_screenshot.png")
-    finally:
-        if driver:
-            logger.info("Closing driver...")
-            driver.quit()
 
 # if __name__ == "__main__":
 #     driver = None
@@ -102,3 +102,21 @@ def positions(driver, company_name: str):
 #     if driver:
 #         logger.info("Closing driver...")
 #         driver.quit()
+
+def scrape_jobs():
+    driver = None
+    all_jobs = []
+    try:
+        driver = setup()
+        for company in companies:
+            company_positions = positions(driver, company)
+            if company_positions:
+                all_jobs.extend(company_positions) # Add each position to the list rather than the list itself
+
+    finally:
+        if driver:
+            logger.info("Closing driver...")
+            driver.quit()
+
+    return all_jobs
+        

@@ -25,3 +25,11 @@ companies = {
         },
     },
 }
+
+# Email configuration
+EMAIL_CONFIG = {
+    "sender": "shpitzery10@gmail.com",
+    "recipient": "shpitzery10@gmail.com",
+    "app_password": "pvfe gfiz ommt khvm",
+    "frontend_url": "http://localhost:3001"
+}
