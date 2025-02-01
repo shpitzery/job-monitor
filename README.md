@@ -24,10 +24,11 @@ This project leverages several powerful technologies:
 
 1. Navigate to the backend directory
 2. Install dependencies:
+   
    ```bash
    pip install -r requirements.txt
    ```
-3. Start the Flask server:
+4. Start the Flask server:
    ```bash
    python app.py
    ```
@@ -37,10 +38,12 @@ This project leverages several powerful technologies:
 
 1. Navigate to the frontend directory
 2. Install dependencies:
+   
    ```bash
    npm install
    ```
-3. Start the React application:
+4. Start the React application:
+   
    ```bash
    npm start
    ```
@@ -51,6 +54,7 @@ This project leverages several powerful technologies:
 The system includes an automated email notification service. To configure:
 
 1. Update the email configuration in `config.py`:
+   
    ```python
    EMAIL_CONFIG = {
        "sender": "your-email@gmail.com",
@@ -59,7 +63,7 @@ The system includes an automated email notification service. To configure:
        "frontend_url": "http://localhost:3001"
    }
    ```
-2. Enable notifications by ensuring the scheduler is running
+3. Enable notifications by ensuring the scheduler is running
 
 ## Automated Job Tracking
 
