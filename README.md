@@ -2,11 +2,11 @@
 
 A web scraping program for tracking R&D student and intern job opportunities across major tech companies.
 
-## Project Information
+## 🚀 Project Information
 
 This project provides an automated job tracking system that monitors and aggregates job postings from multiple tech companies' career pages. Currently, the tracker scrapes positions from Apple, Amazon, and Nvidia, with the capability to expand to additional sources.
 
-## Libraries/Frameworks/Modules
+## 🛠️ Libraries/Frameworks/Modules
 
 This project leverages several powerful technologies:
 
@@ -18,7 +18,7 @@ This project leverages several powerful technologies:
 - Schedule (Task Automation)
 - Yagmail (Email Notifications)
 
-## Setting Up the Project
+## ⚙️ Setting Up the Project
 
 ### Backend Setup
 
@@ -49,7 +49,7 @@ This project leverages several powerful technologies:
    ```
    The application will run on `http://localhost:3001`
 
-## Email Notifications
+## 📧 Email Notifications
 
 The system includes an automated email notification service. To configure:
 
@@ -65,14 +65,14 @@ The system includes an automated email notification service. To configure:
    ```
 3. Enable notifications by ensuring the scheduler is running
 
-## Automated Job Tracking
+## 🔄 Automated Job Tracking
 
 The system automatically checks for new job postings every 6 hours. When new positions are found, it:
 - Saves them to the SQLite database
 - Sends email notifications to configured recipients
 - Updates the frontend display
 
-## Legal Disclaimer
+## 📜 Legal Disclaimer
 
 This project employs web scraping to extract publicly available data from websites. We adhere to the following practices:
 
@@ -82,7 +82,7 @@ This project employs web scraping to extract publicly available data from websit
 
 If you represent any of the tracked companies and have concerns about your site's data being scraped, please contact us for prompt resolution.
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
 - Add support for additional companies
