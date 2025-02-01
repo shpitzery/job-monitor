@@ -50,7 +50,7 @@ def positions(driver, company_name: str):
         
         wait.until(
             EC.presence_of_element_located(locators['container'])
-        )
+        ) # Wait for the search input to load
         
         # Wait for results to load
         time.sleep(5)
@@ -76,9 +76,6 @@ def positions(driver, company_name: str):
                     "posted_date": posted,
                     "location": location
                 }
-                # for key, value in position_text.items():
-                #     print(f'{key}: {value}')
-                # print("-" * 50)
 
                 job_list.append(position)
 
@@ -92,17 +89,7 @@ def positions(driver, company_name: str):
         if driver:
             logger.info("Taking screenshot of error state...")
             driver.save_screenshot("error_screenshot.png")
-
-# if __name__ == "__main__":
-#     driver = None
-#     driver = setup()
-#     for company in companies:
-#         positions(driver, company)
-    
-#     if driver:
-#         logger.info("Closing driver...")
-#         driver.quit()
-
+            
 def scrape_jobs():
     driver = None
     all_jobs = []

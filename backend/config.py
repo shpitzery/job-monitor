@@ -24,6 +24,17 @@ companies = {
         'location': (By.CSS_SELECTOR, 'li')
         },
     },
+    "Nvidia": {
+        "BASE_URL": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=student&locationHierarchy1=2fcb99c455831013ea52bbe14cf9326c",
+        "Locators": 
+        {
+        'container': (By.CSS_SELECTOR, "li.css-1q2dra3"),
+        'title': (By.CSS_SELECTOR, "a[data-automation-id='jobTitle']"),
+        'url': (By.CSS_SELECTOR, "a[data-automation-id='jobTitle']"),
+        'location': (By.CSS_SELECTOR, "[data-automation-id='locations'] dd"),
+        'posted': (By.CSS_SELECTOR, "[data-automation-id='postedOn'] dd")
+        },
+    },
 }
 
 # Email configuration

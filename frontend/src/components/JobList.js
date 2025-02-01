@@ -1,19 +1,30 @@
 function JobList({ jobs }) {
-    const dateForm = (postedDate) => {
-        // Extract only the date part
-        const dateStr = postedDate.toLowerCase().startsWith('posted') ? postedDate.slice(7) : postedDate;
-
-        const date = new Date(dateStr);
-
-        // Get the short month name
-        const month = date.toLocaleString('en-US', { month: 'short' });
-
-        // Get day and year
-        const day = date.getDate();
-        const year = date.getFullYear();
-
-        return `Posted ${month} ${day}, ${year}`;
+  const dateForm = (postedDate) => {
+    // First, check if it's a relative date format
+    if (postedDate.includes('Days Ago')) {
+        return postedDate;
     }
+
+    // Handle regular date format
+    const dateStr = postedDate.toLowerCase().startsWith('posted') 
+        ? postedDate.slice(7).trim() 
+        : postedDate.trim();
+
+    // Try to parse the date
+    const date = new Date(dateStr);
+
+    // Check if the date is valid
+    if (isNaN(date.getTime())) {
+        console.log('Invalid date:', dateStr);
+        return 'Invalid Date'; // Or handle error as needed
+    }
+
+    // Format the valid date
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `Posted ${month} ${day}, ${year}`;
+};
 
   return (
     <div style={{ width: "80%", maxWidth: "1200px", margin: "auto" }}>
@@ -43,7 +54,7 @@ function JobList({ jobs }) {
             </div>
 
             {/* Job Details */}
-            <div style={{ flex: "1 1 auto" }}> {/* Allows the details to expand and fill available space */}
+            <div style={{ flex: "1 1 auto", minWidth: "0" }}> {/* Allows the details to expand and fill available space */}
               <a
                 href={job.url}
                 target="_blank"
@@ -51,7 +62,8 @@ function JobList({ jobs }) {
                 style={{
                   fontWeight: "bold",
                   textDecoration: "none",
-                  color: "#007bff"
+                  color: "#007bff",
+
                 }}
               >
                 {job.title}
@@ -66,7 +78,23 @@ function JobList({ jobs }) {
               textAlign: "left",
               padding: "0 35px",
             }}>
-                {job.location.endsWith('ISR') ? job.location.split(',')[0] : job.location}
+              {(() => {
+                const loc = job.location;
+                
+                // If location ends with ISR, remove ISR and any "Israel," prefix
+                if (loc.endsWith('ISR')) {
+                  return loc.split(',')[0].replace(/israel,\s*/i, "");
+                }
+        
+                // If location contains "Israel," anywhere, remove it
+                if (loc.match(/israel,\s*/i)) {
+                  return loc.replace(/israel,\s*/i, "");
+                }
+        
+        
+                // If none of the above conditions match, return the original location
+                return loc;
+              })()}
             </div>
 
             {/* Posted Date */}
