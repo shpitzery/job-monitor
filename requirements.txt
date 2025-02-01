@@ -1,0 +1,6 @@
+Flask==3.1.0          # For the web server
+Flask-Cors==5.0.0     # For handling CORS in the API
+selenium==4.28.1      # For web scraping
+webdriver-manager==4.0.2  # For managing ChromeDriver
+schedule==1.2.2       # For scheduling the scraping jobs
+yagmail==0.15.293     # For sending email notifications
