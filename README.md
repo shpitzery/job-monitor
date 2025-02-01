@@ -1,6 +1,6 @@
 # Job Monitor
 
-A sophisticated web scraping solution for tracking R&D student and intern job opportunities across major tech companies.
+A web scraping program for tracking R&D student and intern job opportunities across major tech companies.
 
 ## Project Information
 
