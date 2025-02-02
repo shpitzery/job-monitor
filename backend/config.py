@@ -17,22 +17,22 @@ companies = {
         "BASE_URL": "https://www.amazon.jobs/en/search?offset=0&result_limit=10&sort=relevant&business_category%5B%5D=student-programs&distanceType=Mi&radius=24km&latitude=&longitude=&loc_group_id=&loc_query=Israel&base_query=&city=&country=ISR&region=&county=&query_options=&",
         "Locators": 
         {
-        'container': (By.CLASS_NAME, 'job'),
-        'title': (By.CSS_SELECTOR, "h3[class*='job-title'] a"),
-        'url': (By.CSS_SELECTOR, "h3[class*='job-title'] a"),
-        'posted': (By.CSS_SELECTOR, 'h2.posting-date'),
-        'location': (By.CSS_SELECTOR, 'li')
+            'container': (By.CLASS_NAME, 'job'),
+            'title': (By.CSS_SELECTOR, "h3[class*='job-title'] a"),
+            'url': (By.CSS_SELECTOR, "h3[class*='job-title'] a"),
+            'posted': (By.CSS_SELECTOR, 'h2.posting-date'),
+            'location': (By.CSS_SELECTOR, 'li')
         },
     },
     "Nvidia": {
         "BASE_URL": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=student&locationHierarchy1=2fcb99c455831013ea52bbe14cf9326c",
         "Locators": 
         {
-        'container': (By.CSS_SELECTOR, "li.css-1q2dra3"),
-        'title': (By.CSS_SELECTOR, "a[data-automation-id='jobTitle']"),
-        'url': (By.CSS_SELECTOR, "a[data-automation-id='jobTitle']"),
-        'location': (By.CSS_SELECTOR, "[data-automation-id='locations'] dd"),
-        'posted': (By.CSS_SELECTOR, "[data-automation-id='postedOn'] dd")
+            'container': (By.CSS_SELECTOR, "li.css-1q2dra3"),
+            'title': (By.CSS_SELECTOR, "a[data-automation-id='jobTitle']"),
+            'url': (By.CSS_SELECTOR, "a[data-automation-id='jobTitle']"),
+            'location': (By.CSS_SELECTOR, "[data-automation-id='locations'] dd"),
+            'posted': (By.CSS_SELECTOR, "[data-automation-id='postedOn'] dd")
         },
     },
 }
